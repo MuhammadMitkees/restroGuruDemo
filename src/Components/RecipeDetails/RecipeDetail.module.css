@@ -9,11 +9,12 @@
 }
 
 .detailContainer {
+  width: 600px; /* Fixed width */
+  margin: 20px auto;
   padding: 20px;
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
 }
 
 .title {
@@ -33,9 +34,9 @@
 }
 
 .image {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
+  width: 100%; /* Ensures the image fits within the fixed width */
+  height: 300px; /* Fixed height */
+  object-fit: contain; /* Contain the image within the specified area */
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

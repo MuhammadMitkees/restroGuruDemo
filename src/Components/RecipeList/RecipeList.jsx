@@ -4,7 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import RecipeItem from "../RecipeItem/RecipeItem";
 import styles from "./RecipeList.module.css";
 import RecipeDetail from "../RecipeDetails/RecipeDetails";
-import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
+import { Select, MenuItem, InputLabel, FormControl, Box } from "@mui/material";
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
@@ -61,22 +61,22 @@ const RecipeList = () => {
             <MenuItem value="Indian">Indian</MenuItem>
             <MenuItem value="Mediterranean">Mediterranean</MenuItem>
             <MenuItem value="American">American</MenuItem>
-            {/* Add more categories as needed */}
           </Select>
         </FormControl>
       </div>
-      <div className={styles.listContainer}>
+      <Box className={styles.listContainer}>
         <ul className={styles.list}>
           {filteredRecipes.map((recipe) => (
             <RecipeItem
               key={recipe.id}
               recipe={recipe}
               onSelect={handleSelectRecipe}
+              isSelected={selectedRecipe && selectedRecipe.id === recipe.id}
             />
           ))}
         </ul>
         <RecipeDetail recipe={selectedRecipe} />
-      </div>
+      </Box>
     </div>
   );
 };
