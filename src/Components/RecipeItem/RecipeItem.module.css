@@ -1,0 +1,14 @@
+.listItem {
+  padding: 10px 20px;
+  margin: 5px 0;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.listItem:hover {
+  background-color: #e6f7ff;
+}
