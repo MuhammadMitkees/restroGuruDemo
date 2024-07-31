@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./App.css";
+import HomePage from "./Pages/HomePage";
 
 const recipes = [
   {
@@ -16,7 +17,7 @@ const recipes = [
 ];
 
 function App() {
-  return <div className="App">Let's add some content here</div>;
+  return <HomePage />;
 }
 
 export default App;
