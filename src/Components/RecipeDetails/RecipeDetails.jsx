@@ -36,16 +36,21 @@ const RecipeDetail = ({ recipe }) => {
         <p className={styles.preparation}>{recipe.preparation}</p>
       </div>
       <div className={styles.infoSection}>
-        <p className={styles.info}>
-          <strong>Rating:</strong> {recipe.rating} / 5
-        </p>
-        <p className={styles.info}>
+        <div
+          className={`${styles.info} ${
+            recipe.suitableForDiet ? styles.yes : styles.no
+          }`}
+        >
           <strong>Suitable for Diet:</strong>{" "}
           {recipe.suitableForDiet ? "Yes" : "No"}
-        </p>
-        <p className={styles.info}>
+        </div>
+        <div
+          className={`${styles.info} ${
+            recipe.vegetarian ? styles.yes : styles.no
+          }`}
+        >
           <strong>Vegetarian:</strong> {recipe.vegetarian ? "Yes" : "No"}
-        </p>
+        </div>
       </div>
     </div>
   );

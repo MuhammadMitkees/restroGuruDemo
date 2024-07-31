@@ -9,12 +9,12 @@
 }
 
 .detailContainer {
-  width: 600px; /* Fixed width */
-  margin: 20px auto;
   padding: 20px;
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  margin: 20px auto;
 }
 
 .title {
@@ -34,9 +34,9 @@
 }
 
 .image {
-  width: 100%; /* Ensures the image fits within the fixed width */
-  height: 300px; /* Fixed height */
-  object-fit: contain; /* Contain the image within the specified area */
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -64,4 +64,18 @@
 
 .info {
   margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  margin: 5px;
+}
+
+.yes {
+  background-color: #4caf50; /* Green for "Yes" */
+}
+
+.no {
+  background-color: #f44336; /* Red for "No" */
 }
