@@ -4,10 +4,13 @@ import { collection, getDocs } from "firebase/firestore";
 import RecipeItem from "../RecipeItem/RecipeItem";
 import styles from "./RecipeList.module.css";
 import RecipeDetail from "../RecipeDetails/RecipeDetails";
+import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 
-const RecipeList = ({ onSelectRecipe }) => {
+const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
@@ -25,15 +28,46 @@ const RecipeList = ({ onSelectRecipe }) => {
 
     fetchRecipes();
   }, []);
+
   const handleSelectRecipe = (recipe) => {
     setSelectedRecipe(recipe);
   };
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const filteredRecipes = recipes.filter(
+    (recipe) =>
+      selectedCategory === "All" || recipe.category === selectedCategory
+  );
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Recipe List</h2>
+      <div className={styles.filterContainer}>
+        <FormControl variant="outlined" className={styles.formControl}>
+          <InputLabel id="category-label">Category</InputLabel>
+          <Select
+            labelId="category-label"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+            label="Category"
+          >
+            <MenuItem value="All">All</MenuItem>
+            <MenuItem value="Italian">Italian</MenuItem>
+            <MenuItem value="Mexican">Mexican</MenuItem>
+            <MenuItem value="Chinese">Chinese</MenuItem>
+            <MenuItem value="Indian">Indian</MenuItem>
+            <MenuItem value="Mediterranean">Mediterranean</MenuItem>
+            <MenuItem value="American">American</MenuItem>
+            {/* Add more categories as needed */}
+          </Select>
+        </FormControl>
+      </div>
       <div className={styles.listContainer}>
         <ul className={styles.list}>
-          {recipes.map((recipe) => (
+          {filteredRecipes.map((recipe) => (
             <RecipeItem
               key={recipe.id}
               recipe={recipe}
