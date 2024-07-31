@@ -4,12 +4,23 @@ import { collection, getDocs } from "firebase/firestore";
 import RecipeItem from "../RecipeItem/RecipeItem";
 import styles from "./RecipeList.module.css";
 import RecipeDetail from "../RecipeDetails/RecipeDetails";
-import { Select, MenuItem, InputLabel, FormControl, Box } from "@mui/material";
+import {
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Box,
+  Grid,
+  FormControlLabel,
+  Switch,
+} from "@mui/material";
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [dietSwitch, setDietSwitch] = useState(false);
+  const [vegetarianSwitch, setVegetarianSwitch] = useState(false);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -37,33 +48,72 @@ const RecipeList = () => {
     setSelectedCategory(event.target.value);
   };
 
-  const filteredRecipes = recipes.filter(
-    (recipe) =>
-      selectedCategory === "All" || recipe.category === selectedCategory
-  );
+  const handleDietSwitchChange = (event) => {
+    setDietSwitch(event.target.checked);
+  };
+
+  const handleVegetarianSwitchChange = (event) => {
+    setVegetarianSwitch(event.target.checked);
+  };
+
+  const filteredRecipes = recipes.filter((recipe) => {
+    return (
+      (selectedCategory === "All" || recipe.category === selectedCategory) &&
+      (!dietSwitch || recipe.suitableForDiet) &&
+      (!vegetarianSwitch || recipe.vegetarian)
+    );
+  });
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Recipe List</h2>
-      <div className={styles.filterContainer}>
-        <FormControl variant="outlined" className={styles.formControl}>
-          <InputLabel id="category-label">Category</InputLabel>
-          <Select
-            labelId="category-label"
-            value={selectedCategory}
-            onChange={handleCategoryChange}
-            label="Category"
-          >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Italian">Italian</MenuItem>
-            <MenuItem value="Mexican">Mexican</MenuItem>
-            <MenuItem value="Chinese">Chinese</MenuItem>
-            <MenuItem value="Indian">Indian</MenuItem>
-            <MenuItem value="Mediterranean">Mediterranean</MenuItem>
-            <MenuItem value="American">American</MenuItem>
-          </Select>
-        </FormControl>
-      </div>
+      <Grid container spacing={2} className={styles.filterContainer}>
+        <Grid item xs={4}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel id="category-label">Category</InputLabel>
+            <Select
+              labelId="category-label"
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+              label="Category"
+            >
+              <MenuItem value="All">All</MenuItem>
+              <MenuItem value="Italian">Italian</MenuItem>
+              <MenuItem value="Mexican">Mexican</MenuItem>
+              <MenuItem value="Chinese">Chinese</MenuItem>
+              <MenuItem value="Indian">Indian</MenuItem>
+              <MenuItem value="Mediterranean">Mediterranean</MenuItem>
+              <MenuItem value="American">American</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={4}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={dietSwitch}
+                onChange={handleDietSwitchChange}
+                name="dietSwitch"
+                color="primary"
+              />
+            }
+            label="Suitable for Diet"
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={vegetarianSwitch}
+                onChange={handleVegetarianSwitchChange}
+                name="vegetarianSwitch"
+                color="primary"
+              />
+            }
+            label="Vegetarian"
+          />
+        </Grid>
+      </Grid>
       <Box className={styles.listContainer}>
         <ul className={styles.list}>
           {filteredRecipes.map((recipe) => (
