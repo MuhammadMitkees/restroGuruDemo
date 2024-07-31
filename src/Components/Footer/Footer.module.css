@@ -13,5 +13,11 @@
 
 .footer p {
   margin: 0;
-  font-size: 14px;
+  font-size: 0.9rem; /* Adjusted font size for mobile */
+}
+
+@media (max-width: 425px) {
+  .footer p {
+    font-size: 0.75rem;
+  }
 }

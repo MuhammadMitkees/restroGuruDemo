@@ -1,4 +1,3 @@
-// src/components/RecipeItem/RecipeItem.js
 import React from "react";
 import styles from "./RecipeItem.module.css";
 

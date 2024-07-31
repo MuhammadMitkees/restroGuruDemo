@@ -79,7 +79,7 @@ const RecipeList = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Recipe List</h2>
       <Grid container spacing={2} className={styles.filterContainer}>
-        <Grid item xs={3}>
+        <Grid className={styles.dropdownStyle} item xs={3}>
           <FormControl variant="outlined" fullWidth>
             <InputLabel id="category-label">Category</InputLabel>
             <Select
@@ -98,7 +98,7 @@ const RecipeList = () => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={3}>
+        <Grid className={styles.searchBarStyle} item xs={3}>
           <TextField
             variant="outlined"
             fullWidth

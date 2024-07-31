@@ -3,13 +3,29 @@
 .header {
   background-color: var(--primary-color);
   color: var(--white);
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .title {
   margin: 0;
-  font-size: 32px;
+  font-size: 1.5rem; /* Adjusted font size for mobile */
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .title {
+    font-size: 1rem;
+  }
 }
