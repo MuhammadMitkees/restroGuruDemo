@@ -1,22 +1,10 @@
 import React from "react";
 
 import "./App.css";
-
-const recipes = [
-  {
-    author: "Jim",
-    name: "Chicken Curry",
-    description: "Delicious spicy chicken curry",
-  },
-  {
-    author: "Aravind",
-    name: "Hamburger",
-    description: "Juicy burger with toppings and a soft bun",
-  },
-];
+import HomePage from "./Pages/HomePage";
 
 function App() {
-  return <div className="App">Let's add some content here</div>;
+  return <HomePage />;
 }
 
 export default App;

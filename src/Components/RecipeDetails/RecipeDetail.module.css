@@ -1,0 +1,105 @@
+@import "../../Constants/colors.module.css";
+
+.placeholder {
+  text-align: center;
+  font-size: 1rem; /* Adjusted font size for mobile */
+  color: var(--light-text);
+  padding: 20px;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detailContainer {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  margin-top: 10px;
+  padding-top: 0;
+}
+
+.title {
+  font-size: 1.5rem; /* Adjusted font size for mobile */
+  font-weight: bold;
+  color: var(--dark-text);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column; /* Stack meta items vertically */
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--medium-text);
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 100%;
+  max-height: 250px; /* Adjusted for mobile */
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin-bottom: 15px;
+}
+
+.ingredients {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.preparation {
+  line-height: 1.4;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column; /* Stack info items */
+  align-items: center;
+  font-size: 0.9rem; /* Adjusted font size */
+  color: var(--medium-text);
+}
+
+.info {
+  margin-bottom: 5px;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+  color: var(--white);
+  width: 100%;
+  margin: 5px;
+}
+
+.yes {
+  background-color: var(--primary-color);
+}
+
+.no {
+  background-color: var(--error-color);
+}
+
+@media (max-width: 425px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .infoSection {
+    font-size: 0.8rem;
+  }
+
+  .placeholder {
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 766px) {
+  .detailContainer {
+    max-width: 65%;
+  }
+}
