@@ -13,6 +13,7 @@ import {
   Grid,
   FormControlLabel,
   Switch,
+  TextField,
 } from "@mui/material";
 
 const RecipeList = () => {
@@ -21,6 +22,7 @@ const RecipeList = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [dietSwitch, setDietSwitch] = useState(false);
   const [vegetarianSwitch, setVegetarianSwitch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -56,11 +58,16 @@ const RecipeList = () => {
     setVegetarianSwitch(event.target.checked);
   };
 
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value.toLowerCase());
+  };
+
   const filteredRecipes = recipes.filter((recipe) => {
     return (
       (selectedCategory === "All" || recipe.category === selectedCategory) &&
       (!dietSwitch || recipe.suitableForDiet) &&
-      (!vegetarianSwitch || recipe.vegetarian)
+      (!vegetarianSwitch || recipe.vegetarian) &&
+      recipe.title.toLowerCase().includes(searchQuery)
     );
   });
 
@@ -68,7 +75,7 @@ const RecipeList = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Recipe List</h2>
       <Grid container spacing={2} className={styles.filterContainer}>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <FormControl variant="outlined" fullWidth>
             <InputLabel id="category-label">Category</InputLabel>
             <Select
@@ -87,7 +94,17 @@ const RecipeList = () => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
+          <TextField
+            variant="outlined"
+            fullWidth
+            label="Search"
+            placeholder="Search by title"
+            value={searchQuery}
+            onChange={handleSearchQueryChange}
+          />
+        </Grid>
+        <Grid item xs={3}>
           <FormControlLabel
             control={
               <Switch
@@ -100,7 +117,7 @@ const RecipeList = () => {
             label="Suitable for Diet"
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <FormControlLabel
             control={
               <Switch
