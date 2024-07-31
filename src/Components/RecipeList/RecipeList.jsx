@@ -48,18 +48,22 @@ const RecipeList = () => {
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
+    setSelectedRecipe(null); // Clear selected recipe
   };
 
   const handleDietSwitchChange = (event) => {
     setDietSwitch(event.target.checked);
+    setSelectedRecipe(null); // Clear selected recipe
   };
 
   const handleVegetarianSwitchChange = (event) => {
     setVegetarianSwitch(event.target.checked);
+    setSelectedRecipe(null); // Clear selected recipe
   };
 
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value.toLowerCase());
+    setSelectedRecipe(null); // Clear selected recipe
   };
 
   const filteredRecipes = recipes.filter((recipe) => {

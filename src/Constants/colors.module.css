@@ -1,0 +1,9 @@
+:root {
+  --primary-color: #4caf50; /* Primary green */
+  --secondary-color: #f5f5f5; /* Light grey */
+  --dark-text: #333333; /* Dark grey text */
+  --medium-text: #555555; /* Medium grey text */
+  --light-text: #666666; /* Light grey text */
+  --white: #ffffff; /* White */
+  --error-color: #f44336; /* Red */
+}

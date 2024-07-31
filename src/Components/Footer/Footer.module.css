@@ -1,6 +1,8 @@
+@import "../../Constants/colors.module.css";
+
 .footer {
-  background-color: #3f51b5;
-  color: #fff;
+  background-color: var(--primary-color);
+  color: var(--white);
   padding: 10px;
   text-align: center;
   position: fixed;
