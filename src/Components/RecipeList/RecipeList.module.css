@@ -1,10 +1,9 @@
 .container {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 20px auto;
   padding: 10px;
   border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f4f4f4;
 }
 
 .title {
@@ -15,7 +14,18 @@
   color: #333;
 }
 
+.listContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .list {
   list-style: none;
   padding: 0;
+  width: 30%;
+}
+
+.detail {
+  width: 65%;
 }
